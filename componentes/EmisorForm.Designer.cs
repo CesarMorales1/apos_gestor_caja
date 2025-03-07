@@ -25,12 +25,14 @@
             this.emisorInputNombre = new System.Windows.Forms.TextBox();
             this.emisorBotonGuardar = new System.Windows.Forms.Button();
             this.emisorBotonCancelar = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.emisorListadoGrid)).BeginInit();
             this.emisorPanelEdicion.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -90,11 +92,9 @@
             // 
             // emisorPanelEdicion
             // 
-            this.emisorPanelEdicion.Controls.Add(this.botonEstado);
+            this.emisorPanelEdicion.Controls.Add(this.tableLayoutPanel1);
             this.emisorPanelEdicion.Controls.Add(this.emisorLabelTitulo);
             this.emisorPanelEdicion.Controls.Add(this.emisorInputNombre);
-            this.emisorPanelEdicion.Controls.Add(this.emisorBotonGuardar);
-            this.emisorPanelEdicion.Controls.Add(this.emisorBotonCancelar);
             this.emisorPanelEdicion.Location = new System.Drawing.Point(9, 16);
             this.emisorPanelEdicion.Name = "emisorPanelEdicion";
             this.emisorPanelEdicion.Size = new System.Drawing.Size(549, 901);
@@ -106,9 +106,9 @@
             this.botonEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonEstado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.botonEstado.ForeColor = System.Drawing.Color.White;
-            this.botonEstado.Location = new System.Drawing.Point(218, 220);
+            this.botonEstado.Location = new System.Drawing.Point(175, 3);
             this.botonEstado.Name = "botonEstado";
-            this.botonEstado.Size = new System.Drawing.Size(124, 47);
+            this.botonEstado.Size = new System.Drawing.Size(166, 56);
             this.botonEstado.TabIndex = 9;
             this.botonEstado.Text = "Desactivar";
             this.botonEstado.UseVisualStyleBackColor = false;
@@ -139,9 +139,9 @@
             this.emisorBotonGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.emisorBotonGuardar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.emisorBotonGuardar.ForeColor = System.Drawing.Color.White;
-            this.emisorBotonGuardar.Location = new System.Drawing.Point(24, 220);
+            this.emisorBotonGuardar.Location = new System.Drawing.Point(3, 3);
             this.emisorBotonGuardar.Name = "emisorBotonGuardar";
-            this.emisorBotonGuardar.Size = new System.Drawing.Size(124, 47);
+            this.emisorBotonGuardar.Size = new System.Drawing.Size(166, 56);
             this.emisorBotonGuardar.TabIndex = 6;
             this.emisorBotonGuardar.Text = "Guardar";
             this.emisorBotonGuardar.UseVisualStyleBackColor = false;
@@ -152,12 +152,31 @@
             this.emisorBotonCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.emisorBotonCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.emisorBotonCancelar.ForeColor = System.Drawing.Color.White;
-            this.emisorBotonCancelar.Location = new System.Drawing.Point(411, 220);
+            this.emisorBotonCancelar.Location = new System.Drawing.Point(347, 3);
             this.emisorBotonCancelar.Name = "emisorBotonCancelar";
-            this.emisorBotonCancelar.Size = new System.Drawing.Size(122, 47);
+            this.emisorBotonCancelar.Size = new System.Drawing.Size(166, 56);
             this.emisorBotonCancelar.TabIndex = 7;
             this.emisorBotonCancelar.Text = "Cancelar";
             this.emisorBotonCancelar.UseVisualStyleBackColor = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Controls.Add(this.emisorBotonGuardar, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.botonEstado, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.emisorBotonCancelar, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(17, 166);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(516, 62);
+            this.tableLayoutPanel1.TabIndex = 11;
             // 
             // EmisorForm
             // 
@@ -177,6 +196,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emisorListadoGrid)).EndInit();
             this.emisorPanelEdicion.ResumeLayout(false);
             this.emisorPanelEdicion.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -191,5 +211,6 @@
         private System.Windows.Forms.TextBox emisorSearchTextBox;
         private System.Windows.Forms.ComboBox emisorBusquedaCombo;
         private System.Windows.Forms.Button botonEstado;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

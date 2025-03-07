@@ -23,7 +23,6 @@ namespace apos_gestor_caja.Forms
         private List<Cajero> _allCajeros;
         private bool _isUpdating = false;
         private bool _isPasswordVisible = false;
-        private PictureBox closed_eye;
         private bool _ignoreSelectionChange = false;
 
         public CajeroForm()
@@ -34,22 +33,55 @@ namespace apos_gestor_caja.Forms
             _allCajeros = new List<Cajero>();
             _ignoreSelectionChange = false;  // Asegurarse de que empiece en false
 
-            closed_eye = new PictureBox
-            {
-                Name = "closed_eye",
-                Size = new Size(24, 24),
-                Location = new Point(480, 149),
-                BackgroundImageLayout = ImageLayout.Stretch,
-                BackgroundImage = ByteArrayToImage(Resource1.ClosedEye)
-            };
-            closed_eye.Click += Closed_eye_click;
-            cajPanelEdicion.Controls.Add(closed_eye);
+            // Eliminamos la creación del PictureBox redundante y usamos el botón del designer
+            closedEye.BackgroundImage = ByteArrayToImage(Resource1.ClosedEye);
+            closedEye.Click += Closed_eye_click;
 
             ConfigurarFormulario();
             ConfigurarDataGridView();
             ConfigurarPlaceholders();
             ConfigurarBusquedaComboBox();
             _ = CargarDatosInicialesAsync();
+
+            // Configure responsive behavior
+            this.Load += CajeroForm_Load;
+            this.Resize += CajeroForm_Resize;
+        }
+
+        private void CajeroForm_Load(object sender, EventArgs e)
+        {
+            AjustarTamañoSplitContainer();
+        }
+
+        private void CajeroForm_Resize(object sender, EventArgs e)
+        {
+            AjustarTamañoSplitContainer();
+        }
+
+        private void AjustarTamañoSplitContainer()
+        {
+            // Calculate proportional split based on form width
+            int totalWidth = this.ClientSize.Width;
+            splitContainer.SplitterDistance = (int)(totalWidth * 0.67); // 67% for the grid panel
+
+            // Adjust search textbox width
+            cajSearchTextBox.Width = splitContainer.Panel1.Width - 28; // 14px padding on each side
+
+            // Ensure the grid fills the available space
+            cajListadoGrid.Width = splitContainer.Panel1.Width - 28;
+            cajListadoGrid.Height = splitContainer.Panel1.Height - cajListadoGrid.Top - 14;
+
+            // Adjust panel controls width
+            cajPanelEdicion.Width = splitContainer.Panel2.Width - 18; // 9px padding on each side
+
+            cajInputUsuario.Width = cajPanelEdicion.Width - 34;
+            cajInputClave.Width = cajPanelEdicion.Width - 34;
+            cajInputNombre.Width = cajPanelEdicion.Width - 34;
+            cajComboNivel.Width = cajPanelEdicion.Width - 34;
+            textBox1.Width = cajPanelEdicion.Width - 34;
+
+            // Reposition eye icon - usar el botón closedEye del designer
+            closedEye.Location = new Point(cajInputClave.Right - 42, cajInputClave.Location.Y);
         }
 
         private async Task CargarDatosInicialesAsync()
@@ -217,8 +249,8 @@ namespace apos_gestor_caja.Forms
 
                     _isPasswordVisible = false;
                     cajInputClave.PasswordChar = '*';
-                    closed_eye.BackgroundImage = ByteArrayToImage(Resource1.ClosedEye);
-                    closed_eye.Refresh();
+                    closedEye.BackgroundImage = ByteArrayToImage(Resource1.ClosedEye);
+                    closedEye.Refresh();
 
                     // Actualizar el estado del botón según Activo
                     ActualizarEstadoBoton(cajero.Activo);
@@ -290,12 +322,12 @@ namespace apos_gestor_caja.Forms
                 Width = 80
             };
 
-            var activoColumn = new DataGridViewTextBoxColumn
+            var activoColumn = new DataGridViewCheckBoxColumn
             {
                 Name = "Activo",
                 DataPropertyName = "Activo",
                 HeaderText = "Activo",
-                Width = 80
+                Width = 70
             };
 
             cajListadoGrid.Columns.AddRange(new DataGridViewColumn[]
@@ -462,8 +494,8 @@ namespace apos_gestor_caja.Forms
 
             _isPasswordVisible = false;
             cajInputClave.PasswordChar = '*';
-            closed_eye.BackgroundImage = ByteArrayToImage(Resource1.ClosedEye);
-            closed_eye.Refresh();
+            closedEye.BackgroundImage = ByteArrayToImage(Resource1.ClosedEye);
+            closedEye.Refresh();
 
             // Restablecer el botón a "Desactivar" para un nuevo cajero
             ActualizarEstadoBoton(true);
@@ -540,15 +572,13 @@ namespace apos_gestor_caja.Forms
             {
                 cajInputClave.PasswordChar = '\0';
                 this.closedEye.BackgroundImage = Properties.Resources.Eye;
-
             }
             else
             {
                 cajInputClave.PasswordChar = '*';
                 this.closedEye.BackgroundImage = Properties.Resources.Closed_Eye;
-
             }
-            closed_eye.Refresh();
+            closedEye.Refresh();
         }
 
         private Image ByteArrayToImage(byte[] byteArray)

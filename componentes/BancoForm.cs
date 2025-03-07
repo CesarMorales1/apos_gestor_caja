@@ -195,12 +195,12 @@ namespace apos_gestor_caja.Forms
                 Width = 400
             };
 
-            var activoColumn = new DataGridViewTextBoxColumn
+            var activoColumn = new DataGridViewCheckBoxColumn
             {
                 Name = "Activo",
                 DataPropertyName = "Activo",
                 HeaderText = "Activo",
-                Width = 80
+                Width = 70
             };
 
             cajListadoGrid.Columns.AddRange(new DataGridViewColumn[]

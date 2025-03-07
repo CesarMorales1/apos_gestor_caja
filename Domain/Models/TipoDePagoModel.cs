@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace apos_gestor_caja.Domain.Models
 {
-
-    public class Usuario
+    public class TipoDePagoModel
     {
         public int Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
         public string Nombre { get; set; }
-        public bool Activo { get; set; }
+        public string Abreviacion { get; set; }
+
     }
 }
