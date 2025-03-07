@@ -514,5 +514,11 @@ namespace apos_gestor_caja.componentes
                 e.Handled = true;
             }
         }
+
+        private void cuadreDeCajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CierreCaja cierreCajaForm = new CierreCaja();
+            cierreCajaForm.ShowDialog();
+        }
     }
 }

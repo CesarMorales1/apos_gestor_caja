@@ -96,7 +96,9 @@
     <Compile Include="applicationLayer\interfaces\IArchivoService.cs" />
     <Compile Include="applicationLayer\interfaces\IBancoService.cs" />
     <Compile Include="applicationLayer\interfaces\ICajeroService.cs" />
+    <Compile Include="applicationLayer\interfaces\ICierreCaja.cs" />
     <Compile Include="applicationLayer\interfaces\IEmisorService.cs" />
+    <Compile Include="applicationLayer\interfaces\ITipoDePago.cs" />
     <Compile Include="applicationLayer\interfaces\IUsuarioService.cs" />
     <Compile Include="componentes\BancoForm.cs">
       <SubType>Form</SubType>
@@ -109,6 +111,12 @@
     </Compile>
     <Compile Include="componentes\CajeroForm.Designer.cs">
       <DependentUpon>CajeroForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="componentes\CierreCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="componentes\CierreCaja.Designer.cs">
+      <DependentUpon>CierreCaja.cs</DependentUpon>
     </Compile>
     <Compile Include="componentes\EmisorForm.cs">
       <SubType>Form</SubType>
@@ -162,8 +170,10 @@
     <Compile Include="componentes\MySQLHelper.cs" />
     <Compile Include="Domain\Models\Banco.cs" />
     <Compile Include="Domain\Models\Cajero.cs" />
+    <Compile Include="Domain\Models\cierreCaja.cs" />
     <Compile Include="Domain\Models\Emisor.cs" />
     <Compile Include="Domain\Models\SalesRecord.cs" />
+    <Compile Include="Domain\Models\TipoDePagoModel.cs" />
     <Compile Include="Domain\Models\UploadVenta.cs" />
     <Compile Include="Domain\Models\Usuario.cs" />
     <Compile Include="extensiona\ComboBoxExtension.cs" />
@@ -175,6 +185,7 @@
     <Compile Include="infraestructure\CajeroRepository.cs" />
     <Compile Include="infraestructure\EmisorRepository.cs" />
     <Compile Include="infraestructure\SalesRepository.cs" />
+    <Compile Include="infraestructure\TipoDePagoRepository.cs" />
     <Compile Include="infraestructure\UsuarioRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -185,8 +196,11 @@
     </Compile>
     <Compile Include="service\BancoService.cs" />
     <Compile Include="service\CajeroService.cs" />
+    <Compile Include="service\CierreCajaService.cs" />
+    <Compile Include="service\CuadreCajaService.cs" />
     <Compile Include="service\EmisorService.cs" />
     <Compile Include="service\ExcelService.cs" />
+    <Compile Include="service\TipoDePagoService.cs" />
     <Compile Include="service\UploadVentas.cs" />
     <Compile Include="service\UserInformation.cs" />
     <Compile Include="service\UsuarioService.cs" />
@@ -196,6 +210,9 @@
     <EmbeddedResource Include="componentes\CajeroForm.resx">
       <DependentUpon>CajeroForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="componentes\CierreCaja.resx">
+      <DependentUpon>CierreCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="componentes\EmisorForm.resx">
       <DependentUpon>EmisorForm.cs</DependentUpon>

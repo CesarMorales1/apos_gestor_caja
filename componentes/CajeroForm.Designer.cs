@@ -30,12 +30,14 @@
             this.cajComboNivel = new System.Windows.Forms.ComboBox();
             this.cajBotonGuardar = new System.Windows.Forms.Button();
             this.cajBotonCancelar = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cajListadoGrid)).BeginInit();
             this.cajPanelEdicion.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -95,7 +97,7 @@
             // 
             // cajPanelEdicion
             // 
-            this.cajPanelEdicion.Controls.Add(this.botonEstado);
+            this.cajPanelEdicion.Controls.Add(this.tableLayoutPanel1);
             this.cajPanelEdicion.Controls.Add(this.textBox1);
             this.cajPanelEdicion.Controls.Add(this.closedEye);
             this.cajPanelEdicion.Controls.Add(this.cajLabelTitulo);
@@ -103,8 +105,6 @@
             this.cajPanelEdicion.Controls.Add(this.cajInputClave);
             this.cajPanelEdicion.Controls.Add(this.cajInputNombre);
             this.cajPanelEdicion.Controls.Add(this.cajComboNivel);
-            this.cajPanelEdicion.Controls.Add(this.cajBotonGuardar);
-            this.cajPanelEdicion.Controls.Add(this.cajBotonCancelar);
             this.cajPanelEdicion.Location = new System.Drawing.Point(9, 16);
             this.cajPanelEdicion.Name = "cajPanelEdicion";
             this.cajPanelEdicion.Size = new System.Drawing.Size(549, 901);
@@ -116,13 +116,12 @@
             this.botonEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonEstado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.botonEstado.ForeColor = System.Drawing.Color.White;
-            this.botonEstado.Location = new System.Drawing.Point(213, 380);
+            this.botonEstado.Location = new System.Drawing.Point(175, 3);
             this.botonEstado.Name = "botonEstado";
-            this.botonEstado.Size = new System.Drawing.Size(124, 47);
+            this.botonEstado.Size = new System.Drawing.Size(166, 44);
             this.botonEstado.TabIndex = 9;
             this.botonEstado.Text = "Desactivar";
             this.botonEstado.UseVisualStyleBackColor = false;
-            this.botonEstado.Click += new System.EventHandler(this.BotonEstado_click);
             // 
             // textBox1
             // 
@@ -204,9 +203,9 @@
             this.cajBotonGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cajBotonGuardar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.cajBotonGuardar.ForeColor = System.Drawing.Color.White;
-            this.cajBotonGuardar.Location = new System.Drawing.Point(24, 380);
+            this.cajBotonGuardar.Location = new System.Drawing.Point(3, 3);
             this.cajBotonGuardar.Name = "cajBotonGuardar";
-            this.cajBotonGuardar.Size = new System.Drawing.Size(124, 47);
+            this.cajBotonGuardar.Size = new System.Drawing.Size(166, 44);
             this.cajBotonGuardar.TabIndex = 6;
             this.cajBotonGuardar.Text = "Guardar";
             this.cajBotonGuardar.UseVisualStyleBackColor = false;
@@ -217,13 +216,32 @@
             this.cajBotonCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cajBotonCancelar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.cajBotonCancelar.ForeColor = System.Drawing.Color.White;
-            this.cajBotonCancelar.Location = new System.Drawing.Point(411, 380);
+            this.cajBotonCancelar.Location = new System.Drawing.Point(347, 3);
             this.cajBotonCancelar.Name = "cajBotonCancelar";
-            this.cajBotonCancelar.Size = new System.Drawing.Size(122, 47);
+            this.cajBotonCancelar.Size = new System.Drawing.Size(166, 44);
             this.cajBotonCancelar.TabIndex = 7;
             this.cajBotonCancelar.Text = "Cancelar";
             this.cajBotonCancelar.UseVisualStyleBackColor = false;
             this.cajBotonCancelar.Click += new System.EventHandler(this.CajBotonCancelar_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Controls.Add(this.cajBotonGuardar, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.botonEstado, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cajBotonCancelar, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(17, 369);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(516, 50);
+            this.tableLayoutPanel1.TabIndex = 11;
             // 
             // CajeroForm
             // 
@@ -243,6 +261,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cajListadoGrid)).EndInit();
             this.cajPanelEdicion.ResumeLayout(false);
             this.cajPanelEdicion.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -262,5 +281,6 @@
         private System.Windows.Forms.Button closedEye;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button botonEstado;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

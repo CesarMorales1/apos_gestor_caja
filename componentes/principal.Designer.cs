@@ -33,15 +33,15 @@
             this.procesosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subirVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarLibroDeVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cuadreDeCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maestrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bancosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.emisoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cajerosMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.navbar = new System.Windows.Forms.Panel();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarLibroDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cuadreDeCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.navbar = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.navbar.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +84,13 @@
             this.generarLibroDeVentaToolStripMenuItem.Text = "Generar libro de venta";
             this.generarLibroDeVentaToolStripMenuItem.Click += new System.EventHandler(this.generarLibroDeVentaToolStripMenuItem_Click);
             // 
+            // cuadreDeCajaToolStripMenuItem
+            // 
+            this.cuadreDeCajaToolStripMenuItem.Name = "cuadreDeCajaToolStripMenuItem";
+            this.cuadreDeCajaToolStripMenuItem.Size = new System.Drawing.Size(289, 34);
+            this.cuadreDeCajaToolStripMenuItem.Text = "Cuadre de caja";
+            this.cuadreDeCajaToolStripMenuItem.Click += new System.EventHandler(this.cuadreDeCajaToolStripMenuItem_Click);
+            // 
             // maestrasToolStripMenuItem
             // 
             this.maestrasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -124,17 +131,6 @@
             this.cajerosMenuItem2.Text = "cajeros";
             this.cajerosMenuItem2.Click += new System.EventHandler(this.cajerosMenuItem2_Click);
             // 
-            // navbar
-            // 
-            this.navbar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.navbar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.navbar.Controls.Add(this.menuStrip1);
-            this.navbar.Location = new System.Drawing.Point(-1, 0);
-            this.navbar.Name = "navbar";
-            this.navbar.Size = new System.Drawing.Size(7536, 37);
-            this.navbar.TabIndex = 1;
-            this.navbar.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
             // consultasToolStripMenuItem
             // 
             this.consultasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -149,11 +145,16 @@
             this.generarLibroDeVentasToolStripMenuItem.Size = new System.Drawing.Size(297, 34);
             this.generarLibroDeVentasToolStripMenuItem.Text = "Generar libro de ventas";
             // 
-            // cuadreDeCajaToolStripMenuItem
+            // navbar
             // 
-            this.cuadreDeCajaToolStripMenuItem.Name = "cuadreDeCajaToolStripMenuItem";
-            this.cuadreDeCajaToolStripMenuItem.Size = new System.Drawing.Size(289, 34);
-            this.cuadreDeCajaToolStripMenuItem.Text = "Cuadre de caja";
+            this.navbar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.navbar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.navbar.Controls.Add(this.menuStrip1);
+            this.navbar.Location = new System.Drawing.Point(-1, 0);
+            this.navbar.Name = "navbar";
+            this.navbar.Size = new System.Drawing.Size(7536, 37);
+            this.navbar.TabIndex = 1;
+            this.navbar.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // principal
             // 

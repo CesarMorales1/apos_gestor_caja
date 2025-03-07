@@ -48,3 +48,4 @@ C:\Users\Cesar Morales\source\repos\apos_gestor_caja\bin\Debug\apos_gestor_caja.
 C:\Users\Cesar Morales\source\repos\apos_gestor_caja\obj\Debug\apos_gestor_caja.Forms.EmisorForm.resources
 C:\Users\Cesar Morales\source\repos\apos_gestor_caja\bin\Debug\BCrypt.Net-Next.dll
 C:\Users\Cesar Morales\source\repos\apos_gestor_caja\bin\Debug\BCrypt.Net-Next.xml
+C:\Users\Cesar Morales\source\repos\apos_gestor_caja\obj\Debug\apos_gestor_caja.componentes.CierreCaja.resources

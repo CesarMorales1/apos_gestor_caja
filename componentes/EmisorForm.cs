@@ -23,6 +23,73 @@ namespace apos_gestor_caja.Forms
             ConfigurarFormulario();
             ConfigurarEventos();
             CargarEmisoresAsync();
+
+            // Configure responsive behavior
+            this.Load += EmisorForm_Load;
+            this.Resize += EmisorForm_Resize;
+            this.MinimumSize = new Size(800, 600); // Establecer tamaño mínimo para evitar problemas de layout
+        }
+
+        private void EmisorForm_Load(object sender, EventArgs e)
+        {
+            AjustarTamañoSplitContainer();
+
+            // Establecer anclaje de controles para mejor responsive
+            emisorListadoGrid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            emisorSearchTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+
+            // Anclajes para el panel de edición
+            emisorPanelEdicion.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            emisorLabelTitulo.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            emisorInputNombre.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+        }
+
+        private void EmisorForm_Resize(object sender, EventArgs e)
+        {
+            AjustarTamañoSplitContainer();
+        }
+
+        // Manejador para cambios en el DPI o escala de pantalla
+        protected override void OnDpiChanged(DpiChangedEventArgs e)
+        {
+            base.OnDpiChanged(e);
+            AjustarTamañoSplitContainer();
+        }
+
+        private void AjustarTamañoSplitContainer()
+        {
+            // Calculate proportional split based on form width
+            int totalWidth = this.ClientSize.Width;
+            int totalHeight = this.ClientSize.Height;
+
+            // Ajustar el splitContainer a la ventana completa
+            splitContainer.Width = totalWidth;
+            splitContainer.Height = totalHeight;
+
+            // Establecer la división apropiada (67% para la lista, 33% para el formulario)
+            splitContainer.SplitterDistance = (int)(totalWidth * 0.67);
+
+            // Ajustar los anchos de los controles en el Panel1 (lista)
+            emisorSearchTextBox.Width = splitContainer.Panel1.Width - 28; // 14px padding en cada lado
+            emisorListadoGrid.Width = splitContainer.Panel1.Width - 28;
+            emisorListadoGrid.Height = splitContainer.Panel1.Height - emisorListadoGrid.Top - 14;
+
+            // Ajustar el tamaño del panel de edición
+            emisorPanelEdicion.Width = splitContainer.Panel2.Width - 18; // 9px padding en cada lado
+            emisorPanelEdicion.Height = splitContainer.Panel2.Height - 32;
+
+            // Ajustar los controles dentro del panel de edición
+            emisorInputNombre.Width = emisorPanelEdicion.Width - 34; // 17px padding en cada lado
+
+            // Ajustar el tamaño del TableLayoutPanel de botones
+            tableLayoutPanel1.Width = emisorPanelEdicion.Width - 34;
+
+            // Asegurarse de que los botones tienen un tamaño adecuado
+            int buttonWidth = (tableLayoutPanel1.Width - 40) / 3; // Espacio para 3 botones con margen
+            emisorBotonGuardar.Width = buttonWidth;
+            botonEstado.Width = buttonWidth;
+            emisorBotonCancelar.Width = buttonWidth;
         }
 
         private void ConfigurarFormulario()
@@ -30,14 +97,24 @@ namespace apos_gestor_caja.Forms
             emisorListadoGrid.AutoGenerateColumns = false;
             emisorListadoGrid.Columns.Add("Id", "ID");
             emisorListadoGrid.Columns.Add("Nombre", "Nombre");
-            emisorListadoGrid.Columns.Add("Estado", "Estado");
+
+            // Agregar columna de checkbox para Activo
+            DataGridViewCheckBoxColumn activoColumn = new DataGridViewCheckBoxColumn
+            {
+                Name = "Activo",
+                DataPropertyName = "Activo",
+                HeaderText = "Activo",
+                Width = 70
+            };
+            emisorListadoGrid.Columns.Add(activoColumn);
 
             emisorListadoGrid.Columns["Id"].DataPropertyName = "Id";
             emisorListadoGrid.Columns["Nombre"].DataPropertyName = "Nombre";
-            emisorListadoGrid.Columns["Estado"].DataPropertyName = "Activo";
 
-            emisorListadoGrid.Columns["Estado"].DefaultCellStyle.Format = "Activo;Inactivo";
             emisorListadoGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            // Aplicar estilos al DataGridView
+            StyleDataGridView();
 
             emisorSearchTextBox.GotFocus += (s, e) =>
             {
@@ -156,7 +233,7 @@ namespace apos_gestor_caja.Forms
                 }
 
                 LimpiarFormulario();
-                 CargarEmisoresAsync();
+                CargarEmisoresAsync();
             }
             catch (Exception ex)
             {
@@ -194,7 +271,7 @@ namespace apos_gestor_caja.Forms
                     }
 
                     ActualizarBotonEstado();
-                     CargarEmisoresAsync();
+                    CargarEmisoresAsync();
                 }
             }
             catch (Exception ex)
@@ -234,6 +311,20 @@ namespace apos_gestor_caja.Forms
             _esModoEdicion = false;
             botonEstado.Visible = false;
             emisorListadoGrid.ClearSelection();
+        }
+
+        private void StyleDataGridView()
+        {
+            emisorListadoGrid.EnableHeadersVisualStyles = false;
+            emisorListadoGrid.BorderStyle = BorderStyle.None;
+            emisorListadoGrid.BackgroundColor = Color.WhiteSmoke;
+            emisorListadoGrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 123, 255);
+            emisorListadoGrid.DefaultCellStyle.SelectionForeColor = Color.White;
+            emisorListadoGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 123, 255);
+            emisorListadoGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            emisorListadoGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            emisorListadoGrid.DefaultCellStyle.Font = new Font("Segoe UI", 9);
+            emisorListadoGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
         }
     }
 }
